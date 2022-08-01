@@ -1,0 +1,48 @@
+[2022-08-01 02:05:25,491] {taskinstance.py:1179} INFO - Dependencies all met for <TaskInstance: banco_central_ingestao.importar_arquivos_brutos manual__2022-08-01T02:00:23.117197+00:00 [queued]>
+[2022-08-01 02:05:25,503] {taskinstance.py:1179} INFO - Dependencies all met for <TaskInstance: banco_central_ingestao.importar_arquivos_brutos manual__2022-08-01T02:00:23.117197+00:00 [queued]>
+[2022-08-01 02:05:25,504] {taskinstance.py:1376} INFO - 
+--------------------------------------------------------------------------------
+[2022-08-01 02:05:25,504] {taskinstance.py:1377} INFO - Starting attempt 2 of 2
+[2022-08-01 02:05:25,504] {taskinstance.py:1378} INFO - 
+--------------------------------------------------------------------------------
+[2022-08-01 02:05:25,524] {taskinstance.py:1397} INFO - Executing <Task(PythonOperator): importar_arquivos_brutos> on 2022-08-01 02:00:23.117197+00:00
+[2022-08-01 02:05:25,533] {standard_task_runner.py:52} INFO - Started process 3466 to run task
+[2022-08-01 02:05:25,538] {standard_task_runner.py:79} INFO - Running: ['***', 'tasks', 'run', 'banco_central_ingestao', 'importar_arquivos_brutos', 'manual__2022-08-01T02:00:23.117197+00:00', '--job-id', '18', '--raw', '--subdir', 'DAGS_FOLDER/Teste.py', '--cfg-path', '/tmp/tmpeqdo20_c', '--error-file', '/tmp/tmp73mmciqj']
+[2022-08-01 02:05:25,541] {standard_task_runner.py:80} INFO - Job 18: Subtask importar_arquivos_brutos
+[2022-08-01 02:05:25,633] {task_command.py:371} INFO - Running <TaskInstance: banco_central_ingestao.importar_arquivos_brutos manual__2022-08-01T02:00:23.117197+00:00 [running]> on host af485ce0d591
+[2022-08-01 02:05:25,716] {taskinstance.py:1591} INFO - Exporting the following env vars:
+AIRFLOW_CTX_DAG_OWNER=***
+AIRFLOW_CTX_DAG_ID=banco_central_ingestao
+AIRFLOW_CTX_TASK_ID=importar_arquivos_brutos
+AIRFLOW_CTX_EXECUTION_DATE=2022-08-01T02:00:23.117197+00:00
+AIRFLOW_CTX_TRY_NUMBER=2
+AIRFLOW_CTX_DAG_RUN_ID=manual__2022-08-01T02:00:23.117197+00:00
+[2022-08-01 02:05:25,719] {taskinstance.py:1909} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/operators/python.py", line 171, in execute
+    return_value = self.execute_callable()
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/operators/python.py", line 189, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+  File "/opt/airflow/dags/Teste.py", line 12, in importar_arquivos_brutos
+    df_consolidado = pd.read_csv(caminho_raw + '/df_consolidado.csv', encoding='latin1')
+  File "/home/airflow/.local/lib/python3.7/site-packages/pandas/util/_decorators.py", line 311, in wrapper
+    return func(*args, **kwargs)
+  File "/home/airflow/.local/lib/python3.7/site-packages/pandas/io/parsers/readers.py", line 586, in read_csv
+    return _read(filepath_or_buffer, kwds)
+  File "/home/airflow/.local/lib/python3.7/site-packages/pandas/io/parsers/readers.py", line 482, in _read
+    parser = TextFileReader(filepath_or_buffer, **kwds)
+  File "/home/airflow/.local/lib/python3.7/site-packages/pandas/io/parsers/readers.py", line 811, in __init__
+    self._engine = self._make_engine(self.engine)
+  File "/home/airflow/.local/lib/python3.7/site-packages/pandas/io/parsers/readers.py", line 1040, in _make_engine
+    return mapping[engine](self.f, **self.options)  # type: ignore[call-arg]
+  File "/home/airflow/.local/lib/python3.7/site-packages/pandas/io/parsers/c_parser_wrapper.py", line 51, in __init__
+    self._open_handles(src, kwds)
+  File "/home/airflow/.local/lib/python3.7/site-packages/pandas/io/parsers/base_parser.py", line 229, in _open_handles
+    errors=kwds.get("encoding_errors", "strict"),
+  File "/home/airflow/.local/lib/python3.7/site-packages/pandas/io/common.py", line 707, in get_handle
+    newline="",
+FileNotFoundError: [Errno 2] No such file or directory: '/media/tchaikovsky/DataResearch/mt/air-dbt-ge/data/raw//df_consolidado.csv'
+[2022-08-01 02:05:25,730] {taskinstance.py:1420} INFO - Marking task as FAILED. dag_id=banco_central_ingestao, task_id=importar_arquivos_brutos, execution_date=20220801T020023, start_date=20220801T020525, end_date=20220801T020525
+[2022-08-01 02:05:25,743] {standard_task_runner.py:97} ERROR - Failed to execute job 18 for task importar_arquivos_brutos ([Errno 2] No such file or directory: '/media/tchaikovsky/DataResearch/mt/air-dbt-ge/data/raw//df_consolidado.csv'; 3466)
+[2022-08-01 02:05:25,790] {local_task_job.py:156} INFO - Task exited with return code 1
+[2022-08-01 02:05:25,870] {local_task_job.py:273} INFO - 0 downstream tasks scheduled from follow-on schedule check

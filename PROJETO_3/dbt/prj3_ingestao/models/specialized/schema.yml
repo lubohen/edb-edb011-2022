@@ -1,0 +1,10 @@
+
+version: 2
+
+sources:
+  - name: trusted
+    tables:
+    - name: tbl_dim_calendario
+      description: "tabela normalizada com o calendário"
+    - name: tbl_dim_instituicoes 
+      description: "Tabela com dados de instituicoes bancarias"
