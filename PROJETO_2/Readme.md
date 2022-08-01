@@ -1,5 +1,4 @@
 #Integrantes do Grupo
-
 Pietro Sanchini
 Lucas Bonilha
 Tiago Galinari
